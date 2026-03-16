@@ -1,0 +1,78 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-[#020617] antialiased;
+  }
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #312e81;
+  border-radius: 10px;
+}
+
+@keyframes drift {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
+}
+
+marquee {
+  color: #6366f1;
+}
+@keyframes scanline {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(400%); }
+}
+
+.animate-scanline {
+  animation: scanline 8s linear infinite;
+}
+
+/* Make cards look like they are floating */
+.glass-card {
+  perspective: 1000px;
+}
+/* Add this to index.css */
+.stApp::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    rgba(18, 16, 16, 0) 50%, 
+    rgba(0, 0, 0, 0.1) 50%
+  ), linear-gradient(
+    90deg, 
+    rgba(255, 0, 0, 0.02), 
+    rgba(0, 255, 0, 0.01), 
+    rgba(0, 0, 255, 0.02)
+  );
+  background-size: 100% 4px, 6px 100%;
+  z-index: 100;
+  pointer-events: none;
+}
+
+@keyframes scan {
+  from { top: -100%; }
+  to { top: 100%; }
+}
+
+.scan-bar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 10px;
+  background: rgba(99, 102, 241, 0.1);
+  box-shadow: 0 0 20px #6366f1;
+  z-index: 101;
+  animation: scan 12s linear infinite;
+  pointer-events: none;
+}
